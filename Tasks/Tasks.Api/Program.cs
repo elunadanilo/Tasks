@@ -1,4 +1,12 @@
+using Tasks.Core.Interfaces;
+using Tasks.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+builder.Services.AddTransient<ITaskRepository, TaskRepository>();
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -21,5 +29,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();
